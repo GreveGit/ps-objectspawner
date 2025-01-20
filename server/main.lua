@@ -1,15 +1,18 @@
 local QBCore = exports["qb-core"]:GetCoreObject()
 local ServerObjects = {}
 
-QBCore.Commands.Add('object', 'Makes you add objects', {}, true, function(source)
-    local source = source
+lib.addCommand('object', {
+    help = 'Makes you add objects',
+    restricted = 'god', -- This ensures only users with "god" permission can use the command
+    params = {}, -- Add parameters if required, otherwise keep it empty
+}, function(source)
     local Player = QBCore.Functions.GetPlayer(source)
     local permission = 'god'
     QBCore.Functions.AddPermission(Player.PlayerData.source, permission)
     if QBCore.Functions.HasPermission(source, 'god') then
         TriggerClientEvent('ps-objectspawner:client:registerobjectcommand', source, permission)
     end
-end, 'god')
+end)
 
 RegisterNetEvent("ps-objectspawner:server:CreateNewObject", function(model, coords, objecttype, options, objectname)
     local source = source
