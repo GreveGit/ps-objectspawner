@@ -16,7 +16,7 @@ server_scripts {
 
 dependencies {
     'ox_lib', -- Required for lib.addCommand
-    -- 'qb-core' -- Assuming you're using qb-core for player functions
+    'qb-core' -- Assuming you're using qb-core for player functions
 }
 
 ui_page "html/index.html"
